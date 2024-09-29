@@ -16,14 +16,14 @@ const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#1A2027',
   }),
 }));
-
+const token = localStorage.getItem('token');
 function ImageFolder() {
   const [savedImages, setSavedImages] = useState([]);
 
   const getSavedImages = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/folder/show', {
+   
+      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/folder/show', { 
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
@@ -38,8 +38,12 @@ function ImageFolder() {
   };
 
   useEffect(() => {
+    if(token){
+
+ 
     getSavedImages();
-  }, []);
+  }
+  }, [token]);
 
   const handleDownload = async (url, filename) => {
     try {
