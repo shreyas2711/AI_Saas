@@ -21,7 +21,6 @@ const UserLevelLayout = () => {
   const items3 = [
     { key: 'userDashboard', label: 'Dashboard' }, // Ensure this matches the route path
     { key: 'upgrade', label: 'Upgrade' },
-    { key: 'sharpenImage', label: 'My orders' },
   ];
 
   const handleNavigateNavbar = ({ key }) => {
