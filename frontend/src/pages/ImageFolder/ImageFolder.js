@@ -17,6 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   }),
 }));
 const token = localStorage.getItem('token');
+console.log("token:",token);
 function ImageFolder() {
   const [savedImages, setSavedImages] = useState([]);
 
@@ -39,8 +40,6 @@ function ImageFolder() {
 
   useEffect(() => {
     if(token){
-
- 
     getSavedImages();
   }
   }, [token]);
