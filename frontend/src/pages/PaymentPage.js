@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import useRazorpay from "react-razorpay";
@@ -69,7 +69,7 @@ function PaymentPage() {
   
         handler: async (response) => {
           try {
-            await axios.post("http://localhost:4000/api/payment/verify", {
+            await axios.post("https://ai-saas-5z18.onrender.com/api/payment/verify", {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,

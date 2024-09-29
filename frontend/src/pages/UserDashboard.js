@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, styled, Typography } from '@mui/material'
+import { Box, Card, CardContent, styled } from '@mui/material'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +19,7 @@ function UserDashboard() {
 
   const getUserDetails = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/user/show', {
+      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/user/show', {
         headers: {
           "Authorization": `Bearer ${token}`,
         },

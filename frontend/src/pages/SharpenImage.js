@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
-import { InputText } from "primereact/inputtext";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
-import { enhance, generativeRemove } from "@cloudinary/url-gen/actions/effect";
+import { enhance } from "@cloudinary/url-gen/actions/effect";
 import { Cloudinary } from '@cloudinary/url-gen';
 import { Loader } from 'rsuite';
-import { sharpen } from '@cloudinary/url-gen/actions/adjust';
 import { styled, Typography } from '@mui/material';
 import axios from 'axios';
 import { Button, Modal, Spin } from 'antd';
@@ -27,7 +25,6 @@ function SharpenImage() {
   const [uploadComplete, setUploadComplete] = useState(false);
   const [transforming, setTransforming] = useState(false);
   const [cldResponse, setCldResponse] = useState(null);
-  const [value, setValue] = useState('');
   const [transformedURL, setTransformedURL] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -162,7 +159,7 @@ function SharpenImage() {
   const token = localStorage.getItem('token');
   const getUserDetails = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/user/show', {
+      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/user/show', {
         headers: {
           "Authorization": `Bearer ${token}`,
         }
@@ -213,7 +210,7 @@ function SharpenImage() {
       setMinCredit(true);
     }
 
-  })
+  },[userCredit])
 
 
   return (
@@ -296,7 +293,7 @@ function SharpenImage() {
           {/* <button onClick={uploadFile} disabled={uploading} style={{padding:'1rem',background:'blue',color:'white',width:'59rem',borderRadius:'30px',padding:'11px',}}>
             {uploading ? 'Uploading...' : 'Upload'}
           </button>  */}
-          <button onClick={handleSendPrompt} disabled={!uploadComplete} style={{ padding: '1rem', background: uploadComplete ? '#3448c5' : '#8888e5', color: 'white', width: '59rem', borderRadius: '30px', padding: '11px', border: '0', fontWeight: '500' }}>
+          <button onClick={handleSendPrompt} disabled={!uploadComplete} style={{ padding: '1rem', background: uploadComplete ? '#3448c5' : '#8888e5', color: 'white', width: '59rem', borderRadius: '30px', border: '0', fontWeight: '500' }}>
             {transforming ? 'Transforming...' : 'Tranform'}
           </button>
           <button onClick={handleSaveImage} style={{ padding: '10px', background: uploadComplete ? '#3448c5' : '#8888e5', color: 'white', width: '59rem', borderRadius: '30px', border: '0', fontWeight: '500' }}>

@@ -23,7 +23,7 @@ function ImageFolder() {
   const getSavedImages = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:4000/api/folder/show', {
+      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/folder/show', {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`

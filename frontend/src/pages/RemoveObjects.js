@@ -151,7 +151,7 @@ const handleNavigateUpgrade=()=>{
   const handleSendPrompt = async () => {
     try {
       const response = await axios.put(
-        'http://localhost:4000/api/user/transform',
+        'https://ai-saas-5z18.onrender.com/api/user/transform',
         {},
         {
           headers: {
@@ -189,7 +189,7 @@ const handleNavigateUpgrade=()=>{
 
   const getUserDetails = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/user/show', {
+      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/user/show', {
         headers: {
           "Authorization": `Bearer ${token}`,
         }
