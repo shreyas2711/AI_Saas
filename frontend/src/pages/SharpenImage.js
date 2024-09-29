@@ -191,7 +191,7 @@ function SharpenImage() {
     }
     try {
       const token = localStorage.getItem('token');
-      const resp = await axios.post('http://localhost:4000/api/folder/save', saveImagePayload, {
+      const resp = await axios.post('https://ai-saas-5z18.onrender.com/api/folder/save', saveImagePayload, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}` // Include this if your API requires a token

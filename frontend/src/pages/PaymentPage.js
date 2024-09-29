@@ -43,7 +43,7 @@ function PaymentPage() {
       // const amount = {
       //   amount_pay:1000
       // }
-      const response = await axios.post("http://localhost:4000/api/payment/order",{amount:PayValue},{
+      const response = await axios.post("https://ai-saas-5z18.onrender.com/payment/order",{amount:PayValue},{
          // Pass an empty object for the body if not needed
           headers: {
             "Content-Type": "application/json",
