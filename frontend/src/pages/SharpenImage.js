@@ -20,6 +20,7 @@ const ModalPTag = styled('p')({
 
 
 function SharpenImage() {
+  const baseUrl = process.env.BASE_URL;
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadComplete, setUploadComplete] = useState(false);
@@ -159,7 +160,7 @@ function SharpenImage() {
   const token = localStorage.getItem('token');
   const getUserDetails = async () => {
     try {
-      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/user/show', {
+      const response = await axios.get(`${baseUrl}/api/user/show`, {
         headers: {
           "Authorization": `Bearer ${token}`,
         }
@@ -191,10 +192,10 @@ function SharpenImage() {
     }
     try {
       const token = localStorage.getItem('token');
-      const resp = await axios.post('https://ai-saas-5z18.onrender.com/api/folder/save', saveImagePayload, {
+      const resp = await axios.post(`${baseUrl}/api/folder/save`, saveImagePayload, {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}` // Include this if your API requires a token
+          "Authorization": `Bearer ${token}`
         },
         withCredentials: true
       });

@@ -19,12 +19,14 @@ const Item = styled(Paper)(({ theme }) => ({
 const token = localStorage.getItem('token');
 console.log("token:",token);
 function ImageFolder() {
+
+  const baseUrl = process.env.BASE_URL;
   const [savedImages, setSavedImages] = useState([]);
 
   const getSavedImages = async () => {
     try {
    
-      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/folder/show', { 
+      const response = await axios.get(`${baseUrl}/api/folder/show`, { 
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`

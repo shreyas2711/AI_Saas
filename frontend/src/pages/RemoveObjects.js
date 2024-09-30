@@ -30,6 +30,7 @@ const CustomButton = styled('button')({
 })
 
 function RemoveObjects() {
+  const baseUrl = process.env.BASE_URL;
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadComplete, setUploadComplete] = useState(false);
@@ -151,7 +152,7 @@ const handleNavigateUpgrade=()=>{
   const handleSendPrompt = async () => {
     try {
       const response = await axios.put(
-        'https://ai-saas-5z18.onrender.com/api/user/transform',
+       `${baseUrl}/api/user/transform`,
         {},
         {
           headers: {
@@ -189,7 +190,7 @@ const handleNavigateUpgrade=()=>{
 
   const getUserDetails = async () => {
     try {
-      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/user/show', {
+      const response = await axios.get(`${baseUrl}/api/user/show`, {
         headers: {
           "Authorization": `Bearer ${token}`,
         }

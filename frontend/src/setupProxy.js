@@ -1,10 +1,12 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
+
+const baseUrl = process.env.BASE_URL;
 module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://ai-saas-5z18.onrender.com',
+      target: `${baseUrl}`,
       changeOrigin: true,
     })
   );

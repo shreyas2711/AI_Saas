@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function UserDashboard() {
-
+  const baseUrl = process.env.BASE_URL;
   const navigate = useNavigate();
   const [userCredit, setUserCredit] = useState(null);
   const CreditUsage=styled('span')({
@@ -19,7 +19,7 @@ function UserDashboard() {
 
   const getUserDetails = async () => {
     try {
-      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/user/show', {
+      const response = await axios.get(`${baseUrl}/api/user/show`, {
         headers: {
           "Authorization": `Bearer ${token}`,
         },

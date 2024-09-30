@@ -31,6 +31,8 @@ const ButtonDiv = styled('div')({
 
 function PaymentPage() {
 
+  const baseUrl = process.env.BASE_URL;
+
   const [Razorpay] = useRazorpay();
   const RAZORPAY_KEY_ID = 'rzp_test_2Q9vl4rExNYOIC';
   console.log("key:",RAZORPAY_KEY_ID) 
@@ -43,7 +45,7 @@ function PaymentPage() {
       // const amount = {
       //   amount_pay:1000
       // }
-      const response = await axios.post("https://ai-saas-5z18.onrender.com/payment/order",{amount:PayValue},{
+      const response = await axios.post(`${baseUrl}/payment/order`,{amount:PayValue},{
          // Pass an empty object for the body if not needed
           headers: {
             "Content-Type": "application/json",
@@ -69,7 +71,7 @@ function PaymentPage() {
   
         handler: async (response) => {
           try {
-            await axios.post("https://ai-saas-5z18.onrender.com/api/payment/verify", {
+            await axios.post(`${baseUrl}/api/payment/verify`, {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,

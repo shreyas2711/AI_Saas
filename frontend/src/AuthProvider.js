@@ -5,6 +5,7 @@ import axios from "axios";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const baseUrl = process.env.BASE_URL;
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
@@ -15,7 +16,7 @@ const AuthProvider = ({ children }) => {
   const loginAction = async (data) => {
     console.log("data:", data);
     try {
-      const response = await axios.post("https://ai-saas-5z18.onrender.com/api/user/signin", data, {
+      const response = await axios.post(`${baseUrl}/api/user/signin`, data, {
         headers: {
           "Content-Type": "application/json",
         },

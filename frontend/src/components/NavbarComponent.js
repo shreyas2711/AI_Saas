@@ -16,6 +16,8 @@ import axios from 'axios';
 import { Box } from '@mui/material';
 
 export default function NavbarComponent() {
+
+  const baseUrl = process.env.BASE_URL;
   const [openNavColor, setOpenNavColor] = useState(false);
   const [userCredit, setUserCredit] = useState(null);  // Initialize as null
   const auth = useAuth();
@@ -29,7 +31,7 @@ export default function NavbarComponent() {
 
   const getUserDetails = async () => {
     try {
-      const response = await axios.get('https://ai-saas-5z18.onrender.com/api/user/show', {
+      const response = await axios.get(`${baseUrl}/api/user/show`, {
         headers: {
           "Authorization": `Bearer ${token}`,
         },
