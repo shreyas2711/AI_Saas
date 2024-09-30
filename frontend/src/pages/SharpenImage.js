@@ -20,7 +20,7 @@ const ModalPTag = styled('p')({
 
 
 function SharpenImage() {
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadComplete, setUploadComplete] = useState(false);

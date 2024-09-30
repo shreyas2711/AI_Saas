@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function UserDashboard() {
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
   const [userCredit, setUserCredit] = useState(null);
   const CreditUsage=styled('span')({

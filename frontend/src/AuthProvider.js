@@ -5,7 +5,8 @@ import axios from "axios";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+  console.log("baseUrl:",baseUrl);
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token") || "");

@@ -17,7 +17,7 @@ import { Box } from '@mui/material';
 
 export default function NavbarComponent() {
 
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [openNavColor, setOpenNavColor] = useState(false);
   const [userCredit, setUserCredit] = useState(null);  // Initialize as null
   const auth = useAuth();

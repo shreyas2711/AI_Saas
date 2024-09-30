@@ -20,7 +20,7 @@ const token = localStorage.getItem('token');
 console.log("token:",token);
 function ImageFolder() {
 
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const [savedImages, setSavedImages] = useState([]);
 
   const getSavedImages = async () => {
