@@ -12,9 +12,9 @@ const app = express();
 
 app.use(cookieParser());
 
-
+const baseUrl = process.env.CROSS_URL
 app.use(cors({
-  origin: 'https://ai-saas-frontend.onrender.com',  
+  origin: `${baseUrl}`,  
   credentials: true               
 }));
 app.use(express.json());
