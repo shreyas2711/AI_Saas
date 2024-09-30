@@ -10,6 +10,7 @@ import PaymentPage from './pages/PaymentPage';
 import LayoutDesign from './LayoutDesign';
 import UserDashboard from './pages/UserDashboard';
 import UserLevelLayout from './UserLevelLayout';
+import GenerativeReplace from './pages/GenerativeReplace';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="removeObjects" element={<RemoveObjects />} />
             <Route path="sharpenImage" element={<SharpenImage />} />
             <Route path="imageFolder" element={<ImageFolder />} />
+            <Route path="replaceObject" element={<GenerativeReplace />} />
           
           </Route>
         </Routes>
