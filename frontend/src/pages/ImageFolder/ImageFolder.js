@@ -17,6 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   }),
 }));
 const token = localStorage.getItem('token');
+
 console.log("token:",token);
 function ImageFolder() {
 
@@ -25,7 +26,7 @@ function ImageFolder() {
 
   const getSavedImages = async () => {
     try {
-   
+      const token = localStorage.getItem('token');
       const response = await axios.get(`${baseUrl}/api/folder/show`, { 
         headers: {
           "Content-Type": "application/json",
