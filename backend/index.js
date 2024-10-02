@@ -13,6 +13,7 @@ const app = express();
 app.use(cookieParser());
 
 const baseUrl = process.env.CROSS_URL
+console.log("baseurl:",baseUrl);
 app.use(cors({
   origin: `${baseUrl}`,  
   credentials: true               

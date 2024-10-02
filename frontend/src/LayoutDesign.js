@@ -44,11 +44,10 @@ const LayoutDesign = () => {
   ]
   const items3 = [
     { key: 'removeObjects', label: 'Remove Objects' },
-    { key: 'sharpenImage', label: 'Sharpen Objects' },
+    { key: 'enhanceImage', label: 'Enhance Image' },
     { key: 'replaceObject', label: 'Replace Objects' },
-    { key: 'imageFolder', label: 'Image Folder' },
-   
-    { key: '', label: 'Home' },
+    { key: 'upscaleImage', label: 'Upscale Image' },
+    { key: 'imageSharpen', label: 'Sharpen Image' },
   ];
 
   const handleNavigateNavbar=({key})=>{

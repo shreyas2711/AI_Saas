@@ -9,8 +9,13 @@ import axios from 'axios';
 import { Button, Modal, Spin } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { notification, Space } from 'antd';
+import { sharpen } from '@cloudinary/url-gen/actions/adjust';
+import { InputText } from 'primereact/inputtext';
+import ImageResizer from 'react-image-file-resizer';
+import Resizer from "react-image-file-resizer"; 
 const CLOUD_NAME = 'dobkdjc1k';
 const UPLOAD_PRESET = 'new_preset';
+
 
 
 const ModalPTag = styled('p')({
@@ -18,8 +23,19 @@ const ModalPTag = styled('p')({
 })
 
 
+const CustomButton = styled('button')({
+    background:'#3448c5',
+    borderRadius:'4px',
+    color:'white',
+    padding:'5px 7px 5px 7px',
+    fontWeight:'500',
+    fontFamily:'inherit',
+    fontSize:'13px',
+    border:'0',
+    marginLeft:'1rem'
+  })
 
-function SharpenImage() {
+function ImageSharpen() {
   const baseUrl = process.env.REACT_APP_BASE_URL;
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -32,6 +48,7 @@ function SharpenImage() {
   const [userCredit, setUserCredit] = useState(null);
   const [minCredit, setMinCredit] = useState(false);
   const [loader,setLoader] = useState(false);
+  const [value, setValue] = useState('');
   const [api, contextHolder] = notification.useNotification();
   const cld = new Cloudinary({ cloud: { cloudName: CLOUD_NAME } });
 
@@ -44,11 +61,37 @@ function SharpenImage() {
     });
   };
 
+  
+
+
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    setFile(URL.createObjectURL(selectedFile));
-    uploadFile(selectedFile);
+
+    if (selectedFile) {
+      // Create a URL for previewing the selected file
+      setFile(URL.createObjectURL(selectedFile));
+
+      // Resize the file after selection
+      resizeFile(selectedFile);
+    }
   };
+
+  const resizeFile = (file) => {
+    Resizer.imageFileResizer(
+      file, // Pass the selected file
+      610, // Width
+      365, // Height
+      "JPEG", // Format
+      100, // Quality (0-100)
+      0, // Rotation
+      (resizedFile) => {
+        console.log("Resized file:", resizedFile);
+        uploadFile(resizedFile); 
+      },
+      "blob"
+    );
+  };
+
   const navigate = useNavigate();
 
   const handleNavigateUpgrade=()=>{
@@ -56,11 +99,12 @@ function SharpenImage() {
     navigate('/upgrade');
   }
 
+
   const uploadFile = async (file) => {
     if (!file) {
       console.error('Please select a file.');
       return;
-    }
+}
 
     const uniqueUploadId = generateUniqueUploadId();
     const chunkSize = 5 * 1024 * 1024;
@@ -122,7 +166,23 @@ function SharpenImage() {
   };
 
   console.log("transform before:", transforming);
-  const handleSendPrompt = () => {
+  const handleSendPrompt = async () =>  {
+    try {
+      const response = await axios.put(
+       `${baseUrl}/api/user/transform`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          withCredentials: true
+        }
+      );
+      console.log("Response:", response);
+    } catch (error) {
+      console.error("Error during transformation:", error);
+    }
 
     console.log("transform after:", transforming);
     setIsLoading(true);
@@ -130,7 +190,7 @@ function SharpenImage() {
     if (cldResponse && cldResponse.public_id) {
 
       setLoader(true);
-      const transformedImage = cld.image(cldResponse.public_id).effect(enhance());
+      const transformedImage = cld.image(cldResponse.public_id).adjust(sharpen().strength(value));
 
       const transformedURL = transformedImage.toURL();
 
@@ -213,7 +273,7 @@ function SharpenImage() {
 
   },[userCredit])
 
-
+  console.log("transformed url:",transformedURL);
   return (
     <>
 
@@ -227,9 +287,18 @@ function SharpenImage() {
       <Spin fullscreen />
     :null}
       <div>
-        <h1>Enhance your image</h1>
+        <h1>Sharpen your image</h1>
       </div>
       <div style={{ marginTop: '5rem' }}>
+      <div className="input-box">
+          <InputText
+            placeholder='Enter sharpen strength from range 0-200'
+            style={{ width: '75rem' }}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <CustomButton onClick={handleSendPrompt}>Send</CustomButton>
+        </div>
         <div className="image-section" style={{ marginTop: '2rem' }}>
           <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
             <Grid item xs={4} md={6} >
@@ -294,9 +363,6 @@ function SharpenImage() {
           {/* <button onClick={uploadFile} disabled={uploading} style={{padding:'1rem',background:'blue',color:'white',width:'59rem',borderRadius:'30px',padding:'11px',}}>
             {uploading ? 'Uploading...' : 'Upload'}
           </button>  */}
-          <button onClick={handleSendPrompt} disabled={!uploadComplete} style={{ padding: '1rem', background: uploadComplete ? '#3448c5' : '#8888e5', color: 'white', width: '59rem', borderRadius: '30px', border: '0', fontWeight: '500' }}>
-            {transforming ? 'Transforming...' : 'Tranform'}
-          </button>
           <button onClick={handleSaveImage} style={{ padding: '10px', background: uploadComplete ? '#3448c5' : '#8888e5', color: 'white', width: '59rem', borderRadius: '30px', border: '0', fontWeight: '500' }}>
             Save Image
           </button>
@@ -306,4 +372,4 @@ function SharpenImage() {
   );
 }
 
-export default SharpenImage;
+export default ImageSharpen;
