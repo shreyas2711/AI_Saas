@@ -16,6 +16,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -23,6 +24,7 @@ const Navbar = () => {
     {
       text: "Home",
       icon: <HomeIcon />,
+      link:'/lab'
     },
     {
       text: "About",
@@ -47,7 +49,7 @@ const Navbar = () => {
         <img src={Logo} alt="" />
       </div>
       <div className="navbar-links-container">
-        <a href="">Home</a>
+        <a href="/lab">Home</a>
         <a href="">About</a>
         <a href="">Testimonials</a>
         <a href="">Contact</a>
@@ -67,7 +69,7 @@ const Navbar = () => {
           onKeyDown={() => setOpenMenu(false)}
         >
           <List>
-            {menuOptions.map((item) => (
+            {menuOptions.map((item) => (  
               <ListItem key={item.text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>{item.icon}</ListItemIcon>

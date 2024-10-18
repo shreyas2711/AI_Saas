@@ -233,13 +233,13 @@ const handleNavigateUpgrade=()=>{
         <div className="input-box">
           <InputText
           placeholder='From'
-            style={{ width: '75rem',marginBottom:'1rem' }}
+            style={{ width: '75rem',marginBottom:'1rem',height:'40px',padding:'1rem' }}
             value={value1}
             onChange={(e) => setValue1(e.target.value)}
           />
           <InputText
           placeholder='To'
-            style={{ width: '75rem' }}
+            style={{ width: '75rem',height:'40px',padding:'1rem' }}
             value={value2}
             onChange={(e) => setValue2(e.target.value)}
           />

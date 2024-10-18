@@ -31,9 +31,9 @@ function App() {
 
           {/* Route for login */}
           <Route path="/login" element={<Login />} />
-          <Route path="/landingpage" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage />} />
           {/* LayoutDesign wraps the main layout */}
-          <Route path="/" element={<LayoutDesign />}>
+          <Route path="/lab" element={<LayoutDesign />}>
             {/* All child routes under the main layout */}
             <Route index element={<Home />} />
             <Route path="removeObjects" element={<RemoveObjects />} />
@@ -41,7 +41,6 @@ function App() {
             <Route path="replaceObject" element={<GenerativeReplace />} />
             <Route path="upscaleImage" element={<UpscaleImage />} />
             <Route path="imageSharpen" element={<ImageSharpen />} />
-          
           </Route>
         </Routes>
       </AuthProvider>

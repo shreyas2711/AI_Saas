@@ -225,9 +225,10 @@ const handleNavigateUpgrade=()=>{
         <h1>Remove object from image</h1>
       </div>
       <div style={{ marginTop: '5rem' }}>
-        <div className="input-box">
+        <div className="input-box mx-2">
           <InputText
-            style={{ width: '75rem' }}
+            placeholder='Enter object you want to remove'
+            style={{ width: '75rem',height:'40px',padding:'1rem' }}
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />

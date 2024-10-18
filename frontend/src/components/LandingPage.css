@@ -154,7 +154,7 @@
     .work-section-bottom {
       margin-top: 1rem !important;
     }
-    .contact-form-container {
+    /* .contact-form-container {
       padding: 0.5rem !important;
       flex-direction: column;
       justify-content: center;
@@ -167,7 +167,7 @@
       padding: 0.5rem 1rem !important;
       margin-bottom: 0.8rem !important;
       text-align: center;
-    }
+    } */
     .footer-wrapper {
       flex-direction: column;
     }

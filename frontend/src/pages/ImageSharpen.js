@@ -293,7 +293,7 @@ function ImageSharpen() {
       <div className="input-box">
           <InputText
             placeholder='Enter sharpen strength from range 0-200'
-            style={{ width: '75rem' }}
+            style={{ width: '75rem',height:'40px',padding:'1rem' }}
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />

@@ -43,11 +43,11 @@ const LayoutDesign = () => {
     // { key: 'userdashboard', label: 'Dashboard' },
   ]
   const items3 = [
-    { key: 'removeObjects', label: 'Remove Objects' },
-    { key: 'enhanceImage', label: 'Enhance Image' },
-    { key: 'replaceObject', label: 'Replace Objects' },
-    { key: 'upscaleImage', label: 'Upscale Image' },
-    { key: 'imageSharpen', label: 'Sharpen Image' },
+    { key: 'lab/removeObjects', label: 'Remove Objects' },
+    { key: 'lab/enhanceImage', label: 'Enhance Image' },
+    { key: 'lab/replaceObject', label: 'Replace Objects' },
+    { key: 'lab/upscaleImage', label: 'Upscale Image' },
+    { key: 'lab/imageSharpen', label: 'Sharpen Image' },
   ];
 
   const handleNavigateNavbar=({key})=>{

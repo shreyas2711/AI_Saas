@@ -7,6 +7,8 @@ import { Box, styled, Typography } from "@mui/material";
 import '../App.css'
 import './LandingPage.css'
 import CloudVideo from "../Video/CloudVideo.webm"
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Link } from "react-router-dom";
 
 const SideGreenHeading = styled('span')({
     color:'#90dbb5',
@@ -55,6 +57,15 @@ const Container3ContentSpan = styled('span')({
   color:'black',
   fontSize:'15px',
   fontFamily:'sans-serif'
+})
+
+const TryNowLink  = styled('span')({
+
+    color:'#3367e3',
+    fontWeight:'600',
+    fontSize:'21px',
+    cursor:'pointer'
+
 })
 
 
@@ -131,6 +142,10 @@ const LandingPage = () => {
         <Typography style={{color:'#afadad',fontSize:'21px'}}>
         Transform your image and video workflows with Cloudinary’s Generative, LLM, and Content-Aware AI features.
         </Typography>
+       <Link to="/login"> <TryNowLink>
+          Try Now <ArrowForwardIcon/>
+        </TryNowLink>
+        </Link>
       </Box>
       <Box>
         <img src="https://cloudinary-marketing-res.cloudinary.com/image/upload/c_scale,w_900/e_loop,f_avif,fl_animated.aavif/Cld_Homepage_AI_tab_v5_tsp" alt="" />
