@@ -13,6 +13,8 @@ import GenerativeReplace from './pages/GenerativeReplace';
 import UpscaleImage from './pages/UpscaleImage';
 import EnhanceImage from './pages/EnhanceImage';
 import ImageSharpen from './pages/ImageSharpen';
+import LandingPage from './components/LandingPage';
+
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
 
           {/* Route for login */}
           <Route path="/login" element={<Login />} />
+          <Route path="/landingpage" element={<LandingPage />} />
           {/* LayoutDesign wraps the main layout */}
           <Route path="/" element={<LayoutDesign />}>
             {/* All child routes under the main layout */}
