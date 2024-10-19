@@ -148,7 +148,7 @@ const LayoutDesign = () => {
           >
             <Menu
               mode="inline"
-              defaultSelectedKeys={['removeObjects']} 
+              defaultSelectedKeys={['lab/removeObjects']} 
               onClick={handleNavigateSidebar}
               style={{
                 height: '80vh',

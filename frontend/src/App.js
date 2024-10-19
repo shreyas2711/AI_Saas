@@ -35,7 +35,7 @@ function App() {
           {/* LayoutDesign wraps the main layout */}
           <Route path="/lab" element={<LayoutDesign />}>
             {/* All child routes under the main layout */}
-            <Route index element={<Home />} />
+            {/* <Route index element={<Home />} /> */}
             <Route path="removeObjects" element={<RemoveObjects />} />
             <Route path="enhanceImage" element={<EnhanceImage />} />
             <Route path="replaceObject" element={<GenerativeReplace />} />

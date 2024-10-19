@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
         setToken(res.token);
         localStorage.setItem("token", res.token);
         setIsAuthenticated(true);
-        navigate("/lab");
+        navigate("/lab/removeObjects");
         return;
       }
 
